@@ -1,10 +1,16 @@
 const Discord = require('discord.js')
-const client = new Discord.Client();
-client.login('ODY5NjkxOTQ4MzkzNDUxNTMw.YQB5vg.d3fKJurlifJPMk0su9c17MYDZ-s')
+require('dotenv').config()
+const client = new Discord.Client()
 
-client.on('ready', ReadyDiscord);
+
+const token = process.env.DISCORD_TOKEN;
+console.log("FJLKE:FJEJ")
+
+console.log(token)
+client.login(token)
+client.on('ready', ReadyDiscord)
 
 function ReadyDiscord() {
-	console.log('fjeal;fj');
+	console.log();
 }
 
