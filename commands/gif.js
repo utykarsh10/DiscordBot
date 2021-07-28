@@ -2,7 +2,7 @@ const tenor_token = process.env.TENOR_TOKEN
 const fetch = require('node-fetch')
 
 module.exports = async function(msg, args) {
-	let search_term = "coding train"
+	let search_term = "Programming"
 
 	if(args.length > 0) {
 		search_term = args.join(" ")
