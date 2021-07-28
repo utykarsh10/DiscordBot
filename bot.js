@@ -11,21 +11,30 @@ client.login(token)
 client.on('message', gotMessage)
 
 async function gotMessage(msg) {
+	let tokens = msg.content.split(' ')
+
 	if(msg.content == 'garsh') {
 		msg.reply("let me tell you the story of garsh")
 	}
 
-	if(msg.content == '!gif') {
-		let url = 'https://g.tenor.com/v1/search?q=excited&key=${tenor_token}&limit=8'
+	if(tokens[0] == '!gif') {
 
-		let response = await fetch(url)
-		let json = await response.json()
+	let search_term = "coding train"
 
-		console.log(json)
+		if(tokens.length > 1) {
+			search_term = tokens.slice(1, tokens.length).join(" ")
+		}
 
-		const index = Math.floor(Math.random() * json.results.length)
+	let url = `https://g.tenor.com/v1/search?q=${search_term}&key=${tenor_token}&limit=8`
 
-		msg.channel.send(json.results[index].url)
+	let response = await fetch(url)
+	let json = await response.json()
+
+	console.log(url)
+
+	const index = Math.floor(Math.random() * json.results.length)
+
+	msg.channel.send(json.results[index].url)
 		
 
 	}
