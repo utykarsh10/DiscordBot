@@ -10,7 +10,7 @@ client.login(token)
 client.on("ready", readyDiscord) 
 
 function readyDiscord() {
-	console.log("heheh")
+	console.log("Bot Activated")
 }
 
 const commandHandler = require('./commands')
