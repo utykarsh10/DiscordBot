@@ -8,7 +8,12 @@ const ping = require('./commands/ping.js')
 const user = require('./commands/user')
 const showusers = require('./commands/showusers')
 
-const commands = {response,gif, ping, user, showusers};
+const commands = {response, gif, ping, user, showusers};
+
+// let commandlist = () => {
+// 	return commands;
+// }
+
 
 module.exports = async function(msg) {
 	let tokens = msg.content.split(' ')
@@ -18,7 +23,14 @@ module.exports = async function(msg) {
 
 	if(command.charAt(0) == '!') {
 		command = command.substring(1)
-		commands[command](msg, tokens) //pass in command, and tokens
+		if(command == 'help') {
+			msg.channel.send(
+				"Here are the commands you can use:\n" +
+				Object.keys(commands))
+		}
+		else {
+			commands[command](msg, tokens) //pass in command, and tokens
+		}
 	}
 
 };
